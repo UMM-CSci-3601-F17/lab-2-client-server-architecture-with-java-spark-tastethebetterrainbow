@@ -1,6 +1,6 @@
 # CSCI 3601 Lab #2 - JavaScript and Spark Lab
 
-[![Build Status](https://travis-ci.org/UMM-CSci-3601/3601-lab2_client-server.svg?branch=master)](https://travis-ci.org/UMM-CSci-3601/3601-lab2_client-server)
+[![Build Status](https://travis-ci.org/UMM-CSci-3601-F17/lab-2-client-server-architecture-with-java-spark-tastethebetterrainbow.svg?branch=master)](https://travis-ci.org/UMM-CSci-3601-F17/lab-2-client-server-architecture-with-java-spark-tastethebetterrainbow)
 
 Here you will explore serving up a simple website that you create, 
 using a [Java Spark][spark] server. Spark is a micro framework for 
@@ -20,7 +20,7 @@ client-server architecture. The server will be able to handle
 simple HTTP GET requests, where a client (or a user) can
 visit a URL such as `http://localhost:4567/api/users` and the server
 will respond with JSON-formatted text (following the [JSend][jsend] 
-guidelines) containing
+guidelines) containing[![Build Status](https://travis-ci.org/UMM-CSci-3601/3601-lab2_client-server.svg?branch=master)](https://travis-ci.org/UMM-CSci-3601/3601-lab2_client-server)
 all the users the server knows about, e.g.,
 ```
 {
