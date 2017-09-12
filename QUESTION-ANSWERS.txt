@@ -1,0 +1,7 @@
+Questions
+
+1. It allows a user to specify a certain patterns or types of files that they wish to use within whatever project
+without committing it to the users repository.
+
+2. A route, in java, is a file that allows a java program to implement an interface, ApplicationRoutes.java, that in
+turn allows us to receive requests to their proper function parameters.
