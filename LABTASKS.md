@@ -29,7 +29,7 @@ project, and what is the purpose of `build.gradle`?
 
 Study the server (Java) code in the project you have cloned.
 Run it according to the instructions in the
-[README](./README.md), including running the JUnit tests. Answer
+[README](./README.md) including running the JUnit tests. Answer
 the following questions.
 
 > Protip: Using Google to gain additional knowledge or support your conjectures about how something works is great! It's important that you think about everything and come to an understanding, though, so don't use Google as a scapegoat to get the questions done quickly or you will regret it!
