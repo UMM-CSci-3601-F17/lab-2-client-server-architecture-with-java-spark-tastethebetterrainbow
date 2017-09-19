@@ -1,10 +1,13 @@
 package umm3601;
 
+
+
 import spark.Filter;
 import spark.Request;
 import spark.Response;
-import umm3601.user.Database;
-import umm3601.user.UserController;
+import umm3601.files.Database;
+import umm3601.files.UserController;
+import umm3601.files.TodoController;
 
 import java.io.IOException;
 
@@ -14,12 +17,15 @@ import static spark.debug.DebugScreen.*;
 public class Server {
 
   public static final String USER_DATA_FILE = "src/main/data/users.json";
+  public static final String TODO_DATA_FILE = "src/main/data/todos.json";
   private static Database userDatabase;
+  private static Database todoDatabase;
 
   public static void main(String[] args) {
 
     // Initialize dependencies
     UserController userController = buildUserController();
+    TodoController todoController = buildTodoController();
 
     // Configure Spark
     port(4567);
@@ -38,6 +44,10 @@ public class Server {
 
     // Get specific user
     get("api/users/:id", userController::getUser);
+
+    // Get todos
+
+    get("api/todos", todoController::getTodos);
     // List users, filtered using query parameters
     get("api/users", userController::getUsers);
 
@@ -81,6 +91,34 @@ public class Server {
     }
 
     return userController;
+  }
+
+  /***
+   * Create a database using the json fie, use it as
+   * data source for a new TodoController
+   *
+   * Constructing the controller might throw an IOException if
+   * there are problems reading from the JSON "database" file.
+   * If that happens we'll print out an error message and shut
+   * the server down.
+   * @throws IOException if we can't open or read the user data file
+   */
+  private static TodoController buildTodoController() {
+    TodoController todoController = null;
+
+    try {
+      todoDatabase = new Database(TODO_DATA_FILE);
+      todoController = new TodoController(todoDatabase);
+    } catch (IOException e) {
+      System.err.println("The server failed to load the user data; shutting down.");
+      e.printStackTrace(System.err);
+
+      // Shut the server down
+      stop();
+      System.exit(1);
+    }
+
+    return todoController;
   }
 
   // Enable GZIP for all responses
